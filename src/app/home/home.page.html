@@ -1,0 +1,52 @@
+<ion-content class="ion-padding main-container" [fullscreen]="true">
+
+  <!-- Log out button -->
+  <ion-fab slot="fixed" vertical="top" horizontal="end">
+    <ion-fab-button color="danger" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Cards Vertical -->
+  <ion-grid >
+    <ion-row style="flex-grow: 1">
+      <ion-col [size]="isVerticalOrientation() ? '6' : '4'" *ngFor="let card of themeCards">
+        <ion-col>
+          <div class="img-container" align="center" (click)="reproduceSound(card.value)">
+            <img [src]="card.image" />
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Language buttons -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <ion-img [src]="this.selectedLanguageButtonImg"></ion-img>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button *ngFor="let button of languageButtons">
+        <ion-img
+          [src]="button.img"
+          (click)="changeLanguage(button.value)"
+        ></ion-img>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <!-- Themes buttons -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-img [src]="this.selectedThemeButtonImg"></ion-img>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button *ngFor="let button of themeButtons">
+        <ion-img
+          [src]="button.img"
+          (click)="changeTheme(button.value)"
+        ></ion-img>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
