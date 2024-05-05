@@ -1,6 +1,25 @@
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="container">
-    <h1>Splash</h1>
-    <h3>Fermin Gonzalez - 4B</h3>
+    <h3 #division class="division text-align: center press-start-2p-regular">División 4B</h3>
+
+
+    <img #imgElement src="../../assets/icon/favicon.png" />
+
+    <h3 #nombre class="nombre text-align: center press-start-2p-regular">Fermín González</h3>
+
+
   </div>
 </ion-content>
+
+<style scoped>
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  .nombre, .division {
+    text-align: center;
+  }
+</style>

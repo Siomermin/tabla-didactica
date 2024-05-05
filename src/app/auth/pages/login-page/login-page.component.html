@@ -1,24 +1,74 @@
-<h1>Login</h1>
-<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <ion-item>
-    <ion-input label="E-Mail"  formControlName="email" type="text"></ion-input>
-    <ion-text color="danger" *ngIf="isValidField('email')">
-      {{ getErrorByField("email") }}</ion-text
-    >
-  </ion-item>
+<ion-content class="ion-padding">
+  <!-- <span class="nes-text is-warning">Iniciar sesión</span> -->
 
-  <ion-item>
-    <ion-input label="Password"  formControlName="password" type="text"></ion-input>
-    <ion-text color="danger" *ngIf="isValidField('password')">
-      {{ getErrorByField("password") }}
-    </ion-text>
-  </ion-item>
-  <ion-button block color="primary" type="submit" [disabled]="myForm.invalid">
-    Login
-  </ion-button>
-</form>
+  <!-- Loading Spinner -->
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+  <div class="container">
+    <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-input
+          class="nes-input"
+          placeholder="Correo electrónico"
+          formControlName="email"
+          type="text"
+        ></ion-input>
+        <ion-text color="danger" *ngIf="isValidField('email')">
+          {{ getErrorByField("email") }}</ion-text
+        >
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          class="nes-input"
+          placeholder="Contraseña"
+          formControlName="password"
+          type="password"
+        ></ion-input>
+        <ion-text color="danger" *ngIf="isValidField('password')">
+          {{ getErrorByField("password") }}
+        </ion-text>
+      </ion-item>
 
 
-<a routerLink="/auth/register"> No tenes cuenta? Registrate </a>
+      <button
+        [disabled]="myForm.invalid"
+        type="submit"
+        class="nes-btn is-warning form-btn"
+      >
+        Iniciar sesión
+      </button>
+    </form>
 
+     <!-- Acceso rapido -->
+     <div>
+      <label for="default_select">Acceso rápido</label>
+      <div class="nes-select">
+        <select required id="default_select" [(ngModel)]="selectedUser" (change)="fastLogin()">
+          <option value="" disabled selected>Seleccione...</option>
+          <option *ngFor="let user of testUsers | slice : 0 : 3" [ngValue]="user">{{ user.profile }}</option>
+        </select>
+      </div>
+    </div>
+
+    <a routerLink="/auth/register"><span class="nes-text is-warning"> No tenes cuenta? Registrate!</span></a>
+
+
+
+  </div>
+</ion-content>
+
+<style scoped>
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+        height: 90vh;
+  }
+</style>

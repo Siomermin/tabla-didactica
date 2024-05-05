@@ -12,7 +12,7 @@
     <ion-row style="flex-grow: 1">
       <ion-col [size]="isVerticalOrientation() ? '6' : '4'" *ngFor="let card of themeCards">
         <ion-col>
-          <div class="img-container" align="center" (click)="reproduceSound(card.value)">
+          <div class="img-container"  (click)="reproduceSound(card.value)">
             <img [src]="card.image" />
           </div>
         </ion-col>
@@ -26,7 +26,7 @@
       <ion-img [src]="this.selectedLanguageButtonImg"></ion-img>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button *ngFor="let button of languageButtons">
+      <ion-fab-button color="warning" *ngFor="let button of languageButtons">
         <ion-img
           [src]="button.img"
           (click)="changeLanguage(button.value)"
@@ -41,7 +41,7 @@
       <ion-img [src]="this.selectedThemeButtonImg"></ion-img>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button *ngFor="let button of themeButtons">
+      <ion-fab-button color="warning" *ngFor="let button of themeButtons">
         <ion-img
           [src]="button.img"
           (click)="changeTheme(button.value)"
