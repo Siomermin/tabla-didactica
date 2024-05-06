@@ -13,7 +13,7 @@ export class AppComponent
 
   constructor() {}
 
-  // ngOnInit(): void {
-  //   // this.router.navigateByUrl('splash');
-  // }
+  ngOnInit(): void {
+     this.router.navigateByUrl('splash');
+  }
 }
