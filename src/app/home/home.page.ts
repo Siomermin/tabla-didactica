@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, HostListener, OnInit, inject, signal } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { ThemesService } from './services/themes.service';
 import { ThemeCard, theme } from './interfaces/theme.interface';
@@ -28,6 +28,8 @@ export class HomePage implements OnInit {
 
   public loggedUser?: any = JSON.parse(localStorage.getItem('loggedUser')!);
 
+  isPortrait: boolean = false;
+
   constructor() {}
 
   isVerticalOrientation(): boolean {
@@ -38,8 +40,17 @@ export class HomePage implements OnInit {
     this.themeCards = this.themesService.animals;
     this.languageButtons = this.themesService.languageButtons;
     this.themeButtons = this.themesService.themeButtons;
+    this.checkOrientation();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkOrientation();
+  }
+
+  checkOrientation() {
+    this.isPortrait = window.innerHeight > window.innerWidth;
+  }
 
   logout() {
     this.authService.logout();

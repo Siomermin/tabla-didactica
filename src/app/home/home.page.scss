@@ -1,5 +1,8 @@
+
+
+
 .main-container {
-  background-color: #f5f5f5!important; /* Desired background color */
+  background-color: #f5f5f5 !important; /* Desired background color */
 }
 
 .img-container {
@@ -12,7 +15,32 @@
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Adds a transparent white shadow inside the background */
 }
 
-.img-container img {
-  max-width: 100%;
-  height: auto;
+
+
+/* Adjust the size for portrait orientation */
+@media screen and (orientation: portrait) {
+  // .img-container {
+  //   padding: 80px;
+  // }
+  ion-col {
+    height: 30vh;
+    margin-top: 5px;
+  }
+
+  .img-container {
+    height: 30vh;
+
+  }
+
+}
+
+/* Adjust the size for landscape orientation with height less than 850px */
+@media screen and (orientation: landscape) and (max-height: 850px) {
+  .img-container {
+    padding: 5px; /* Decrease padding in this mode */
+  }
+
+  .img-container img {
+    max-width: 80%; /* Make the image smaller */
+  }
 }
