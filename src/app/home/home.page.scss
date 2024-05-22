@@ -18,7 +18,10 @@ ion-content {
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Adds a transparent white shadow inside the background */
 }
 
-
+ion-fab-button {
+  height: 70px;
+  width: 70px;
+}
 
 /* Adjust the size for portrait orientation */
 @media screen and (orientation: portrait) {
